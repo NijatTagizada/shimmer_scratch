@@ -57,7 +57,7 @@ class ShimmerState extends State<Shimmer> with SingleTickerProviderStateMixin {
     return descendant.localToGlobal(offset, ancestor: shimmerBox);
   }
 
-  Listenable get shimmerChanges => _shimmerController;
+  Listenable get shimmerController => _shimmerController;
 
   @override
   Widget build(BuildContext context) {
@@ -101,7 +101,7 @@ class _ShimmerLoadingState extends State<ShimmerLoading> {
     if (_shimmerChanges != null) {
       _shimmerChanges!.removeListener(_onShimmerChange);
     }
-    _shimmerChanges = Shimmer.of(context)?.shimmerChanges;
+    _shimmerChanges = Shimmer.of(context)?.shimmerController;
     if (_shimmerChanges != null) {
       _shimmerChanges!.addListener(_onShimmerChange);
     }
